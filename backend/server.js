@@ -16,7 +16,7 @@ mongoose.connect(process.env.MONGO_URI)
     })
 
     .catch((err)=>{
-        console.log(err,'this is the error')
+        console.log(err,'here is the error')
     })
 
 app.use((req,res,next)=>{
