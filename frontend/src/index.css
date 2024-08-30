@@ -2,11 +2,12 @@ body{
   margin: 0;
   padding: 0;
   background-color: rgb(1, 15, 33);
+  overflow-x: hidden;
 }
 
 header{
   width: 100%;
-  background-color: rgb(241, 236, 236);
+  background-color: rgb(230, 234, 234);
   height: 60px;
   display: flex;
   align-items: center;
@@ -16,7 +17,7 @@ header{
 
 header a{
   text-decoration: none;
-  color: rgb(11, 11, 11);
+  color: rgb(6, 94, 123);
   font-size: 16px;
   font-family: monospace;
   font-weight: bold;
@@ -24,13 +25,80 @@ header a{
 
 .home{
   width: 100%;
+  display: flex;
+  align-items: start;
+  justify-content: center;
+  gap: 4%;
+  padding: 10px;
   margin-bottom: 50px;
 }
 
-.workouts{
+.add-workouts{
+  width: 48%;
+  display: flex;
+  justify-content: center;
+}
+
+.create-workout-div{
   width: 100%;
+}
+
+.create-workout{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+}
+
+.create-workout h2{
+  color: whitesmoke;
+  font-family: monospace;
+  font-weight: bolder;
+}
+
+.create-workout label{
+  color: whitesmoke;
+  font-family: monospace;
+  width: 28%;
+  font-size: 17px;
+  /* text-align: center; */
+}
+
+.create-workout div{
+ 
+  width: 100%;
+  display: flex;
+  align-items: center;
+  height: auto;
+  
+}
+
+.create-workout input{
+  height: 40px;
+  width: 50%;
+  font-family: monospace;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+.create-workout button{
+  width: 30%;
+  border-radius: 5px;
+  border:none;
+  color: white;
+  font-weight: bold;
+  font-family: monospace;
+  font-size: 20px;
+  background: dodgerblue;
+  cursor: pointer;
+  height: 50px;
+}
+.workouts{
+  width: 45%;
   display: grid;
-  grid-template-columns: 25% 25%;
+  grid-template-columns: 50% 50%;
   gap: 5%;
   justify-content: center;
   margin-top: 50px;
@@ -39,7 +107,9 @@ header a{
   
 }
 
+
 .workout-details{
+  margin-bottom: 50px;
   width: 100%;
   height: auto;
   background: rgb(2, 120, 52);
