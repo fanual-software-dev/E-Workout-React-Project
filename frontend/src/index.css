@@ -130,3 +130,41 @@ header a{
   height: 200px;
   /* margin-top: 10px; */
 }
+
+.main-body{
+  width: 100%;
+}
+
+.delete-div{
+  width: 95%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 20px;
+}
+
+.delete-div button{
+  border-radius: 5px;
+  border: none;
+  height: 25px;
+  background-color: cornflowerblue;
+  cursor: pointer;
+  font-weight: bold;
+  color: white;
+}
+
+@keyframes buttonclick {
+
+
+
+  50%{
+    transform: scale(0.95);
+  }
+  
+}
+
+.delete-div button:hover{
+  animation-name: buttonclick;
+  animation-duration: 1s;
+}
+
