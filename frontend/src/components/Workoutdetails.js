@@ -1,10 +1,13 @@
 import React from 'react'
+import { useWorkoutsContext } from '../hooks/useWorkoutsContext'
 
 
 const Workoutdetails = ({workout}) => {
+  const {dispatch} =  useWorkoutsContext()
 
   const deleteworkout = async()=>{
     const id = workout._id
+    
     console.log(id)
 
     const Delete = await fetch(`/api/workouts/${id}`,{
@@ -15,12 +18,16 @@ const Workoutdetails = ({workout}) => {
 
     })
 
+    const data = await Delete.json()
+
     if (!Delete.ok){
       alert('opps something went wrong while deleting')
     }
 
     else{
       alert('workout deleted successfully!')
+      dispatch({type:'DELETE_WORKOUT',payload:data})
+      
     }
   }
     
