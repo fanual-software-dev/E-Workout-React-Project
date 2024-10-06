@@ -19,9 +19,10 @@ const workoutSchema = new Schema({
     },
 
     image:{
-        type:String,
-    
+        type: String,
+        required: true
     }
+    
 },{timestamps: true})
 
 

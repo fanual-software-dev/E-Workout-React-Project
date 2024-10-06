@@ -21,7 +21,7 @@ const {workouts,dispatch} = useWorkoutsContext()
         
         featchWorkouts()
 
-    },[])
+    },[dispatch])
   return (
     <div className='home'>
       <div className='workouts'>
