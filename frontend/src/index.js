@@ -2,14 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
-import { workoutcontextprovider } from './context/workoutcontext';
+import { WorkoutsContextProvider } from './context/WorkoutsContextProvider';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <workoutcontextprovider>
+    <WorkoutsContextProvider>
         <App />
-    </workoutcontextprovider>
+    </WorkoutsContextProvider>
   </React.StrictMode>
 );
 
