@@ -35,8 +35,8 @@ const Createworkout = () => {
             setTitle('')
             setLoad('')
             setReps('')
+            setImage('')
             setError(null)
-            alert('New workout added Succesfully !')
             console.log('its working')
             dispatch({type:'CREATE_WORKOUT',payload:data})
         }

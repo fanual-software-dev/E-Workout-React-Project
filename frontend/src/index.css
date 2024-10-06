@@ -114,11 +114,13 @@ header a{
   margin-bottom: 50px;
   width: 100%;
   height: auto;
-  background: rgb(2, 120, 52);
+  background: rgb(221, 221, 221);
   display: flex;
   flex-direction: column;
   border-radius: 10px;
-  box-shadow: 2px 4px 8px rgb(123, 123, 119);
+  box-shadow: 2px 4px 8px rgb(227, 227, 227);
+  color: rgb(2, 46, 53);
+  font-family: monospace;
 }
 
 .workout-details p,h4{
@@ -135,6 +137,10 @@ header a{
   width: 100%;
 }
 
+.main-body h4{
+  text-align: center;
+}
+
 .delete-div{
   width: 95%;
   display: flex;
@@ -143,28 +149,10 @@ header a{
   padding-right: 20px;
 }
 
-.delete-div button{
-  border-radius: 5px;
-  border: none;
-  height: 25px;
-  background-color: cornflowerblue;
+.delete-div span{
   cursor: pointer;
-  font-weight: bold;
-  color: white;
+  /* color: rgb(0, 0, 0); */
+
 }
 
-@keyframes buttonclick {
-
-
-
-  50%{
-    transform: scale(0.95);
-  }
-  
-}
-
-.delete-div button:hover{
-  animation-name: buttonclick;
-  animation-duration: 1s;
-}
 

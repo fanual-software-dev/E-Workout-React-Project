@@ -1,6 +1,8 @@
 import React from 'react'
 import { useWorkoutsContext } from '../hooks/useWorkoutsContext'
 
+import formatDistanceToNow from 'date-fns/formatDistanceToNow'
+
 
 const Workoutdetails = ({workout}) => {
   const {dispatch} =  useWorkoutsContext()
@@ -25,7 +27,7 @@ const Workoutdetails = ({workout}) => {
     }
 
     else{
-      alert('workout deleted successfully!')
+    
       dispatch({type:'DELETE_WORKOUT',payload:data})
       
     }
@@ -39,8 +41,8 @@ const Workoutdetails = ({workout}) => {
             <p><strong>Load (Kg): </strong>{workout.load}</p>
             <p><strong>Reps : </strong>{workout.reps}</p>
             <div className='delete-div'>
-              <p>{workout.createdAt}</p>
-              <button type='button' onClick={deleteworkout}>Delete</button>
+              <p>{formatDistanceToNow(new Date(workout.createdAt),{addSuffix:true})}</p>
+              <span className='material-icons' onClick={deleteworkout}>delete</span>
             </div>
         </div>
     </div>

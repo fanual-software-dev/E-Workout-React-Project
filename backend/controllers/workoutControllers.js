@@ -31,9 +31,9 @@ const getWorkout = async (req,res) =>{
 // create a new workout
 
 const createWorkout = async (req,res)=>{
-    const {title,load,reps} = req.body
+    const {title,load,reps,image} = req.body
     try{
-        const workout = await Workout.create({title,load,reps})
+        const workout = await Workout.create({title,load,reps,image})
         res.status(200).json(workout)
     }
     catch(error){
