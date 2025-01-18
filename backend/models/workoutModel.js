@@ -18,12 +18,13 @@ const workoutSchema = new Schema({
         required: true
     },
 
-    image:{
-        type: String,
+    createdBy:{
+        type: mongoose.Types.ObjectId,
         required: true
     }
+
     
 },{timestamps: true})
 
 
-module.exports = mongoose.model('Workout',workoutSchema)
+module.exports = mongoose.model('DotWorkout',workoutSchema)

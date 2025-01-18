@@ -1,10 +1,12 @@
-const Workout = require('../models/workout')
+const Workout = require('../models/workoutModel')
 const mongoose = require('mongoose')
 
 // get all workouts
 
 const getWorkouts = async (req,res) => {
-    const workouts = await Workout.find({}).sort({createdAt:-1})
+
+    const createdBy = req.id
+    const workouts = await Workout.find({createdBy:createdBy}).sort({createdAt:-1})
 
     res.status(200).json(workouts)
 }
@@ -14,12 +16,13 @@ const getWorkouts = async (req,res) => {
 const getWorkout = async (req,res) =>{
 
     const {id} = req.params
+    const createdBy = req.id
 
     if(!mongoose.Types.ObjectId.isValid(id)){
         return res.status(505).json({error:"Invalid Id"})
     }
 
-    const workout = await Workout.findById(id)
+    const workout = await Workout.findOne({_id:id, createdBy:createdBy})
 
     if(!workout){
         return res.status(404).json({error:'No such workout'})
@@ -31,9 +34,10 @@ const getWorkout = async (req,res) =>{
 // create a new workout
 
 const createWorkout = async (req,res)=>{
-    const {title,load,reps,image} = req.body
+    const {title,load,reps} = req.body
+    const createdBy = req.id
     try{
-        const workout = await Workout.create({title,load,reps,image})
+        const workout = await Workout.create({title,load,reps,createdBy:createdBy})
         res.status(200).json(workout)
     }
     catch(error){
@@ -45,12 +49,13 @@ const createWorkout = async (req,res)=>{
 
 const deleteWorkout = async(req,res)=>{
     const {id} = req.params
+    const createdBy = req.id
 
     if(!mongoose.Types.ObjectId.isValid(id)){
         return res.status(505).json({error:"Invalid ID"})
     }
 
-    const workout = await Workout.findOneAndDelete({_id: id})
+    const workout = await Workout.findOneAndDelete({_id: id,createdBy:createdBy})
 
     if(!workout){
         return res.status(404).json({error:"File not found"})
@@ -63,12 +68,13 @@ const deleteWorkout = async(req,res)=>{
 
 const updateWorkout = async (req,res) =>{
     const {id} = req.params
+    const createdBy = req.id
 
     if (!mongoose.Types.ObjectId.isValid(id)){
         return res.status(505).json({error:'Invalid ID'})
     }
 
-    const workout = await Workout.findOneAndUpdate({_id : id},{
+    const workout = await Workout.findOneAndUpdate({_id : id,createdBy:createdBy},{
         ...req.body
     })
 

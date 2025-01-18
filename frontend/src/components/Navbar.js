@@ -1,15 +1,26 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
+
 const Navbar = () => {
+
+  
+
+  const Logout = ()=>{
+    
+    localStorage.removeItem("UserData")
+  }
+
   return (
-    <header>
-      <Link to='/'>Home</Link>
-      <Link to='/'>About</Link>
-      <Link to='/'>Workouts</Link>
-      <Link to='/'>Apparatus</Link>
-      <Link to='/'>Contact</Link>
-    </header>
+    <div className='nav-div'>
+      <p className='p'>Work-out App</p>
+      <header>
+        
+        <Link to='/'>LOG IN</Link>
+        <Link to='/signup' >SIGN UP</Link>
+        <Link to='/' onClick={Logout}>LOG OUT</Link>
+      </header>
+    </div>
   )
 }
 
