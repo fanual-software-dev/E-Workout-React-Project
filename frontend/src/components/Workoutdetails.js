@@ -1,7 +1,7 @@
 import React from 'react'
 import { useWorkoutsContext } from '../hooks/useWorkoutsContext'
-
 import formatDistanceToNow from 'date-fns/formatDistanceToNow'
+
 
 
 const Workoutdetails = ({workout}) => {
@@ -9,13 +9,15 @@ const Workoutdetails = ({workout}) => {
 
   const deleteworkout = async()=>{
     const id = workout._id
+    const user = JSON.parse(localStorage.getItem('UserData'))
     
     console.log(id)
 
     const Delete = await fetch(`/api/workouts/${id}`,{
       method:'DELETE',
       headers:{
-        'Content-Type':'application/json'
+        'Content-Type':'application/json',
+        "Authorization":`Bearer ${user.token}`
       }
 
     })
@@ -35,7 +37,6 @@ const Workoutdetails = ({workout}) => {
     
   return (
     <div className='workout-details'>
-        <img src={workout.image}></img> 
         <div className='main-body'>
             <h4>{workout.title}</h4>
             <p><strong>Load (Kg): </strong>{workout.load}</p>

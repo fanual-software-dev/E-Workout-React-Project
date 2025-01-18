@@ -7,20 +7,21 @@ const Createworkout = () => {
     const [title,setTitle] = useState('')
     const [load,setLoad] = useState('')
     const [reps,setReps] = useState('')
-    const [image,setImage] = useState('')
     const [error,setError] = useState(null)
+    const user = JSON.parse(localStorage.getItem('UserData'))
     
 
     const AddWorkout = async (e)=>{
         e.preventDefault()
 
-        const workout = {title,load,reps,image}
+        const workout = {title,load,reps}
 
         const response = await fetch('/api/workouts/',{
             method:'POST',
             body: JSON.stringify(workout),
             headers:{
-                'Content-Type': 'Application/json'
+                'Content-Type': 'Application/json',
+                "Authorization":`Bearer ${user.token}`
             }
         })
 
@@ -35,7 +36,6 @@ const Createworkout = () => {
             setTitle('')
             setLoad('')
             setReps('')
-            setImage('')
             setError(null)
             console.log('its working')
             dispatch({type:'CREATE_WORKOUT',payload:data})
@@ -44,11 +44,11 @@ const Createworkout = () => {
 
   return (
     <div className='create-workout-div'>
-      <form className='create-workout' onSubmit={AddWorkout}>
+      <form className='form' onSubmit={AddWorkout}>
         <h2>Add a New Workout</h2>
 
-        <div>
-            <label>Excerise Title:</label>
+        <div className='divs'>
+            <label>Title :</label>
             <input
             type='text'
             onChange={(e)=>setTitle(e.target.value)}
@@ -56,8 +56,8 @@ const Createworkout = () => {
             />
         </div>
 
-        <div>
-            <label>Excerise Load (Kg):</label>
+        <div className='divs'>
+            <label>Load (Kg) :</label>
             <input
             type='number'
             min={0}
@@ -67,8 +67,8 @@ const Createworkout = () => {
             />
         </div>
 
-        <div>
-            <label>Excerise Reps:</label>
+        <div className='divs'>
+            <label>Reps :</label>
             <input
             type='number'
             min={0}
@@ -78,16 +78,9 @@ const Createworkout = () => {
             />
         </div>
 
-        <div>
-            <label>Excercise Image:</label>
-            <input
-            type='text'
-            onChange={(e)=>setImage(e.target.value)}
-            value={image}
-            />
+        <div className='btn-div'>
+            <button type='submit'>ADD WORKOUT</button>
         </div>
-
-        <button type='submit'>Add Workout</button>
       </form>
     </div>
   )
